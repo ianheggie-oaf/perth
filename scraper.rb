@@ -132,7 +132,7 @@ end
 agent = Mechanize.new
 page = agent.get(info_url)
 # Only get the 4 most recent week's applications
-page.search("a").find_all{|a| a.inner_text =~ /For the period/}[0..3].each do |a|
+page.search("a").find_all{|a| a.inner_text =~ /Report/}[0..3].each do |a|
   page = agent.get(a["href"])
   extract_applications_from_pdf(page.content, info_url)
 end
